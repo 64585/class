@@ -1,0 +1,74 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Base class
+class Person {
+protected:
+    string name;
+
+public:
+    // Member function to set the name
+    void setName(string n) {
+        name = n;
+    }
+
+    // Member function to get the name
+    string getName() {
+        return name;
+    }
+};
+
+// Derived class for Student
+class Student : public Person {
+private:
+    int studentID;
+
+public:
+    // Constructor to initialize name and studentID
+    Student(string n, int id) {
+        setName(n);
+        studentID = id;
+    }
+
+    // Member function to get student ID
+    int getStudentID() {
+        return studentID;
+    }
+};
+
+// Derived class for GraduateStudent
+class GraduateStudent : public Student {
+private:
+    string researchTopic;
+
+public:
+    // Constructor to initialize name, studentID, and researchTopic
+    GraduateStudent(string n, int id, string topic) 
+        : Student(n, id), researchTopic(topic) {}
+
+    // Member function to get research topic
+    string getResearchTopic() {
+        return researchTopic;
+    }
+};
+
+int main() {
+    // Create a Student object
+    Student student("John", 1001);
+    
+    // Create a GraduateStudent object
+    GraduateStudent gradStudent("Alice", 2001, "Artificial Intelligence");
+    
+    // Display information for Student
+    cout << "Student Name: " << student.getName() << endl;
+    cout << "Student ID: " << student.getStudentID() << endl;
+
+    // Display information for GraduateStudent
+    cout << "\nGraduate Student Name: " << gradStudent.getName() << endl;
+    cout << "Student ID: " << gradStudent.getStudentID() << endl;
+    cout << "Research Topic: " << gradStudent.getResearchTopic() << endl;
+
+    return 0;
+}
